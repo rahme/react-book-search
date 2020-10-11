@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const db = require("../models");
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googleboks");
+mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://raffayahmed:password123456789@cluster0.7vqtw.mongodb.net/test?retryWrites=true&w=majority");
 const bookSeed =
 {
     authors: ["Suzanne Collins"],
