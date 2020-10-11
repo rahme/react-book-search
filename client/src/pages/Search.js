@@ -4,15 +4,8 @@ import Results from "../components/Results";
 import API from "../utils/API";
 
 class Search extends React.Component {
-    state = {
-        value: "",
-        books: []
-    };
-
-    componentDidMount() {
-        this.searchBook();
-    }
-
+    state = {value: "",books: []};
+    componentDidMount() {this.searchBook();}
     makeBook = bookData => {
         return {
             _id: bookData.id,
@@ -23,13 +16,11 @@ class Search extends React.Component {
             link: bookData.volumeInfo.previewLink
         }
     }
-
     searchBook = query => {
         API.getBook(query)
             .then(res => this.setState({ books: res.data.items.map(bookData => this.makeBook(bookData)) }))
             .catch(err => console.error(err));
     };
-
     handleInputChange = event => {
         const name = event.target.name;
         const value = event.target.value;
@@ -37,12 +28,10 @@ class Search extends React.Component {
             [name]: value
         });
     };
-
     handleFormSubmit = event => {
         event.preventDefault();
         this.searchBook(this.state.search);
     };
-
     render() {
         return (
             <div>
@@ -55,9 +44,6 @@ class Search extends React.Component {
                     <h2>Results</h2>
                     <Results books={this.state.books} />
                 </div>
-            </div>
-        )
-    }
+            </div>)}
 }
-
 export default Search;
